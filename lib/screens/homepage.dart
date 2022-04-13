@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:olx_app_clone/widgets/iconsgrid.dart';
+import 'package:olx_app_clone/widgets/slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,26 +15,52 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: Container(
-          width: 350,
+          alignment: Alignment.center,
+          width: 300,
           height: 40,
           color: Colors.white,
           child: Center(
             child: TextField(
               decoration: InputDecoration(
-                fillColor: Colors.white,
+                alignLabelWithHint: true,
                 hintText: 'Search in Leooffer',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(14.0),
                 ),
               ),
             ),
           ),
         ),
-        actions: const [Icon(Icons.settings), Icon(Icons.notification_add)],
+        actions: const [
+          Icon(
+            Icons.settings,
+            color: Colors.black,
+          ),
+          Icon(
+            Icons.notification_add,
+            color: Colors.black,
+          )
+        ],
       ),
       drawer: Drawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SizedBox(
+              height: 10,
+            ),
+            ImageSlider(),
+            SizedBox(
+              height: 20,
+            ),
+            IconsGridView(),
+          ],
+        ),
+      ),
     );
   }
 }
