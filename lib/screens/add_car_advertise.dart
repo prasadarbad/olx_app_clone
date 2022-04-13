@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
+import 'package:olx_app_clone/widgets/olx_image_picker.dart';
 
 class AddCarAdvertisement extends StatefulWidget {
   const AddCarAdvertisement({Key? key}) : super(key: key);
@@ -20,28 +25,7 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
       body: SingleChildScrollView(
         child: Form(
           child: Column(
-            children: [
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: Card(
-                  elevation: 1,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  margin: const EdgeInsets.all(10),
-                  semanticContainer: true,
-                  shadowColor: Colors.black,
-                  child: IconButton(
-                      alignment: Alignment.centerLeft,
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.add_a_photo_rounded,
-                        size: 60,
-                      )),
-                ),
-              ),
-            ],
+            children: [OlxImagePicker()],
           ),
         ),
       ),
