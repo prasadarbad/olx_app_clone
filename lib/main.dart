@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app_clone/screens/add_car_advertise.dart';
 import 'package:olx_app_clone/screens/homepage.dart';
+import 'package:olx_app_clone/widgets/bottomnavbar.dart';
 import 'package:olx_app_clone/widgets/iconsgrid.dart';
 
 void main() {
@@ -16,10 +18,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.grey,
         accentColor: Colors.amber,
       ),
-      home: const HomePage(),
+      home: const AddCarAdvertisement(),
     );
   }
 }
