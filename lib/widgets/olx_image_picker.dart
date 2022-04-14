@@ -66,7 +66,7 @@ class _OlxImagePickerState extends State<OlxImagePicker> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: _pickedImage != null && _imageList != null
-                        ? Image.file(File(_imageList[1].path))
+                        ? Image.file(File(_imageList[0].path))
                         : null,
                   ),
                   Container(
