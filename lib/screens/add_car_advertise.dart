@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:olx_app_clone/widgets/general_infromation.dart';
 import 'dart:io';
 
 import 'package:olx_app_clone/widgets/olx_image_picker.dart';
@@ -25,7 +26,13 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
       body: SingleChildScrollView(
         child: Form(
           child: Column(
-            children: [OlxImagePicker()],
+            children: const [
+              OlxImagePicker(),
+              SizedBox(
+                height: 5.0,
+              ),
+              GeneralInformation(),
+            ],
           ),
         ),
       ),
