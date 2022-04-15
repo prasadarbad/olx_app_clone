@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:olx_app_clone/address%20files/location_card.dart';
+import 'package:olx_app_clone/widgets/additional_information.dart';
 import 'package:olx_app_clone/widgets/general_infromation.dart';
 import 'dart:io';
 
@@ -34,6 +35,7 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
               ),
               GeneralInformation(),
               LocationCard(),
+              AdditionalInformation(),
             ],
           ),
         ),
