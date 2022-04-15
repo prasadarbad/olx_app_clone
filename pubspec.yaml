@@ -71,6 +71,8 @@ flutter:
       - assets/icons/sofa.png
       - assets/icons/sport.png
       - assets/icons/wardrobe.png
+      - assets/icons/gear-shift.png
+      - assets/icons/gear-stick.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
