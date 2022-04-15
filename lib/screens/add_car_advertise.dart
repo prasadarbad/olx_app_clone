@@ -7,6 +7,7 @@ import 'package:olx_app_clone/widgets/general_infromation.dart';
 import 'dart:io';
 
 import 'package:olx_app_clone/widgets/olx_image_picker.dart';
+import 'package:olx_app_clone/widgets/specifications.dart';
 
 class AddCarAdvertisement extends StatefulWidget {
   const AddCarAdvertisement({Key? key}) : super(key: key);
@@ -36,6 +37,7 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
               GeneralInformation(),
               LocationCard(),
               AdditionalInformation(),
+              Specification(),
             ],
           ),
         ),
