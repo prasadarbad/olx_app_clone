@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app_clone/providers/car_form_provider.dart';
+import 'package:provider/provider.dart';
 
 class GeneralInformation extends StatefulWidget {
   const GeneralInformation({Key? key}) : super(key: key);
@@ -8,8 +10,11 @@ class GeneralInformation extends StatefulWidget {
 }
 
 class _GeneralInformationState extends State<GeneralInformation> {
+  bool isOn = false;
+  bool isexchangable = false;
   @override
   Widget build(BuildContext context) {
+    final senddata = Provider.of<CarFormProvider>(context);
     return Container(
       width: double.infinity,
       height: 400,
@@ -38,6 +43,9 @@ class _GeneralInformationState extends State<GeneralInformation> {
                     color: Colors.grey),
               ),
               TextFormField(
+                onChanged: (value) {
+                  senddata.gettitle(value);
+                },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
                   focusedBorder: OutlineInputBorder(
@@ -52,7 +60,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Text(
@@ -63,6 +71,9 @@ class _GeneralInformationState extends State<GeneralInformation> {
                     color: Colors.grey),
               ),
               TextFormField(
+                onChanged: (value) {
+                  senddata.getprice(value);
+                },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
                   focusedBorder: OutlineInputBorder(
@@ -93,7 +104,16 @@ class _GeneralInformationState extends State<GeneralInformation> {
                           color: Colors.black),
                     ),
                   ),
-                  Switch(value: false, onChanged: (value) {}),
+                  Switch(
+                    activeColor: Colors.blue,
+                    value: isOn,
+                    onChanged: (value) {
+                      senddata.isnegotiable(value);
+                      setState(() {
+                        isOn = value;
+                      });
+                    },
+                  ),
                 ],
               ),
               Row(
@@ -109,7 +129,16 @@ class _GeneralInformationState extends State<GeneralInformation> {
                           color: Colors.black),
                     ),
                   ),
-                  Switch(value: false, onChanged: (value) {}),
+                  Switch(
+                    activeColor: Colors.blue,
+                    value: isexchangable,
+                    onChanged: (value) {
+                      senddata.exchangebale(value);
+                      setState(() {
+                        isexchangable = value;
+                      });
+                    },
+                  ),
                 ],
               ),
             ],
