@@ -54,7 +54,7 @@ class _AdditionalInformationState extends State<AdditionalInformation> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
             ],

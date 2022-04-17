@@ -4,9 +4,19 @@ import 'package:olx_app_clone/screens/add_car_advertise.dart';
 import 'package:olx_app_clone/screens/homepage.dart';
 import 'package:olx_app_clone/widgets/bottomnavbar.dart';
 import 'package:olx_app_clone/widgets/iconsgrid.dart';
+import 'package:provider/provider.dart';
+import 'package:olx_app_clone/providers/car_form_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => CarFormProvider(
+            '', '', false, false, '', '', '', false, false, '', ''),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
