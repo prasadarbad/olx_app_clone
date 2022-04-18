@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:olx_app_clone/subwidgets/brands.dart';
+import 'package:olx_app_clone/subwidgets/fueltype.dart';
+import 'package:olx_app_clone/subwidgets/transmission.dart';
+import 'package:provider/provider.dart';
+import '../providers/car_form_provider.dart';
 
 class Specification extends StatefulWidget {
   const Specification({Key? key}) : super(key: key);
@@ -8,13 +14,10 @@ class Specification extends StatefulWidget {
 }
 
 class _SpecificationState extends State<Specification> {
-  @override
-  void initState() {
-    // TODO: implement initState
-  }
-
+  bool insuarance = false;
   @override
   Widget build(BuildContext context) {
+    final senddata = Provider.of<CarFormProvider>(context);
     return Container(
       width: double.infinity,
       height: 800,
@@ -35,43 +38,43 @@ class _SpecificationState extends State<Specification> {
               const SizedBox(
                 height: 40,
               ),
-              const Text(
-                'Description',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_right,
-                        color: Colors.blue,
+              InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Brands()));
+                },
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                        child: const Icon(
+                          Icons.arrow_circle_right_outlined,
+                          size: 20,
+                          color: Colors.blue,
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Brands()));
+                        }),
+                    enabled: false,
+                    label: const Text(
+                      'Brand',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 20,
                       ),
-                      onPressed: () {}),
-                  enabled: false,
-                  label: const Text(
-                    'Brand',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20,
                     ),
-                  ),
-                  contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                  focusedBorder: UnderlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    borderSide:
-                        const BorderSide(color: Colors.grey, width: 1.0),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    borderSide:
-                        const BorderSide(color: Colors.grey, width: 1.0),
+                    contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    focusedBorder: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0),
+                    ),
                   ),
                 ),
               ),
@@ -89,63 +92,7 @@ class _SpecificationState extends State<Specification> {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Card(
-                    child: InkWell(
-                      onTap: () {
-                        print("tapped");
-                      },
-                      child: Container(
-                        width: 100,
-                        height: 100.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            ImageIcon(
-                              AssetImage(
-                                'assets/icons/gear-shift.png',
-                              ),
-                              size: 70.00,
-                            ),
-                            Text(
-                              'Manual',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: InkWell(
-                      onTap: () {
-                        print("tapped");
-                      },
-                      child: Container(
-                        width: 100,
-                        height: 100.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            ImageIcon(
-                              AssetImage(
-                                'assets/icons/gear-stick.png',
-                              ),
-                              color: Colors.blue,
-                              size: 70.00,
-                            ),
-                            Text(
-                              'Automatic',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              Transmissions(),
               const SizedBox(
                 height: 20,
               ),
@@ -162,10 +109,19 @@ class _SpecificationState extends State<Specification> {
                           color: Colors.black),
                     ),
                   ),
-                  Switch(value: false, onChanged: (value) {}),
+                  Switch(
+                    activeColor: Colors.blue,
+                    value: insuarance,
+                    onChanged: (value) {
+                      senddata.getinsuarance(value);
+                      setState(() {
+                        insuarance = value;
+                      });
+                    },
+                  ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Text(
@@ -176,6 +132,16 @@ class _SpecificationState extends State<Specification> {
                     color: Colors.grey),
               ),
               TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    senddata.getdistance(value);
+                  });
+                },
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter(RegExp(r'[0-9-.]+$'), allow: true)
+                ],
                 decoration: InputDecoration(
                   suffixIcon: InkWell(
                       child: const Icon(
@@ -201,10 +167,18 @@ class _SpecificationState extends State<Specification> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
+              const Text(
+                'Distance',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
+              ),
+              FuelType(),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Text(
                 'URL',
@@ -214,6 +188,9 @@ class _SpecificationState extends State<Specification> {
                     color: Colors.grey),
               ),
               TextFormField(
+                onChanged: (value) {
+                  senddata.getUrl(value);
+                },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
                   focusedBorder: OutlineInputBorder(

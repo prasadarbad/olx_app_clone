@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/car_form_provider.dart';
 
 class AdditionalInformation extends StatefulWidget {
   const AdditionalInformation({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class AdditionalInformation extends StatefulWidget {
 class _AdditionalInformationState extends State<AdditionalInformation> {
   @override
   Widget build(BuildContext context) {
+    final sendinformation = Provider.of<CarFormProvider>(context);
     return Container(
       width: double.infinity,
       height: 300,
@@ -38,6 +41,9 @@ class _AdditionalInformationState extends State<AdditionalInformation> {
                     color: Colors.grey),
               ),
               TextFormField(
+                onChanged: (value) {
+                  sendinformation.getinformation(value);
+                },
                 maxLength: 500,
                 maxLines: 5,
                 decoration: InputDecoration(
