@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:olx_app_clone/address%20files/address_details.dart';
+import 'package:olx_app_clone/subwidgets/address_details.dart';
+import 'package:provider/provider.dart';
+import '../providers/car_form_provider.dart';
 
 class LocationCard extends StatefulWidget {
   const LocationCard({Key? key}) : super(key: key);
@@ -9,8 +13,23 @@ class LocationCard extends StatefulWidget {
 }
 
 class _LocationCardState extends State<LocationCard> {
+  String address1 = '';
+  bool hasaddress = true;
+  @override
+  void didChangeDependencies() {
+    if (hasaddress) {
+      final getaddress = Provider.of<CarFormProvider>(context);
+      address1 = getaddress.address;
+      print(address1);
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final getaddress = Provider.of<CarFormProvider>(context);
+    address1 = getaddress.address;
+    print(address1);
     return Container(
       width: double.infinity,
       height: 200,
@@ -39,6 +58,7 @@ class _LocationCardState extends State<LocationCard> {
                     color: Colors.grey),
               ),
               TextFormField(
+                initialValue: address1,
                 decoration: InputDecoration(
                   suffixIcon: InkWell(
                       child: const Icon(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:olx_app_clone/address%20files/address_details.dart';
+import 'package:olx_app_clone/subwidgets/address_details.dart';
 import 'package:olx_app_clone/screens/add_car_advertise.dart';
 import 'package:olx_app_clone/screens/homepage.dart';
+import 'package:olx_app_clone/subwidgets/brands.dart';
 import 'package:olx_app_clone/widgets/bottomnavbar.dart';
 import 'package:olx_app_clone/widgets/iconsgrid.dart';
+import 'package:olx_app_clone/widgets/oldimagepicker.dart';
 import 'package:provider/provider.dart';
 import 'package:olx_app_clone/providers/car_form_provider.dart';
 
@@ -12,7 +14,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(
         create: (_) => CarFormProvider(
-            '', '', false, false, '', '', '', false, false, '', ''),
+            '', '', false, false, '', '', '', '', false, '', '', ''),
       ),
     ],
     child: const MyApp(),
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         accentColor: Colors.amber,
       ),
-      home: const AddCarAdvertisement(),
+      home: OlxImages(),
     );
   }
 }
