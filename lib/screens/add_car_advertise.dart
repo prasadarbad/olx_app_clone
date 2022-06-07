@@ -18,6 +18,11 @@ class AddCarAdvertisement extends StatefulWidget {
 }
 
 class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
+  File? userimage;
+  void _pickedimage(File image) {
+    userimage = image;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +35,9 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
       body: SingleChildScrollView(
         child: Form(
           child: Column(
-            children: const [
-              //OlxImages(),
+            children: [
+              OlxImagePicker(_pickedimage),
+              //  OlxImages(),
               SizedBox(
                 height: 5.0,
               ),

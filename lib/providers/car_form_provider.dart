@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
 class CarFormProvider with ChangeNotifier {
-  String title = '';
+  // File? carimage;
+  String title;
   String price = '';
   bool isNegotiable = false;
   bool availableforexchange = false;
@@ -17,7 +21,8 @@ class CarFormProvider with ChangeNotifier {
   String url = '';
 
   CarFormProvider(
-    this.title,
+    // this.carimage,
+   this.title,
     this.price,
     this.isNegotiable,
     this.availableforexchange,
@@ -31,46 +36,46 @@ class CarFormProvider with ChangeNotifier {
     this.url,
   );
 
-  void gettitle(String value) {
-    title = value;
+  // void gettitle(String value) {
+  //   title = value;
 
-    print(title);
-    notifyListeners();
-  }
+  //   print(title);
+  //   notifyListeners();
+  // }
 
-  void getprice(String value) {
-    price = value;
-    print(price);
-    notifyListeners();
-  }
+  // void getprice(String value) {
+  //   price = value;
+  //   print(price);
+  //   notifyListeners();
+  // }
 
-  void isnegotiable(bool value) {
-    isNegotiable = value;
-    print(isNegotiable);
-    notifyListeners();
-  }
+  // void isnegotiable(bool value) {
+  //   isNegotiable = value;
+  //   print(isNegotiable);
+  //   notifyListeners();
+  // }
 
-  void exchangebale(bool value) {
-    availableforexchange = value;
-    notifyListeners();
-    print(availableforexchange);
-  }
+  // void exchangebale(bool value) {
+  //   availableforexchange = value;
+  //   notifyListeners();
+  //   print(availableforexchange);
+  // }
 
-  void getaddress(String value) {
-    address = value;
-  }
+  // void getaddress(String value) {
+  //   address = value;
+  // }
 
-  void getinformation(String value) {
-    description = value;
+  // void getinformation(String value) {
+  //   description = value;
 
-    notifyListeners();
-  }
+  //   notifyListeners();
+  // }
 
-  void getbrand(String value) {
-    brand = value;
-    print(brand);
-    notifyListeners();
-  }
+  // void getbrand(String value) {
+  //   brand = value;
+  //   print(brand);
+  //   notifyListeners();
+  // }
 
   void getTransmission(int value) {
     if (value == 0) {
@@ -81,17 +86,17 @@ class CarFormProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void getinsuarance(bool value) {
-    insuarance = value;
-    print(insuarance);
-    notifyListeners();
-  }
+  // void getinsuarance(bool value) {
+  //   insuarance = value;
+  //   print(insuarance);
+  //   notifyListeners();
+  // }
 
-  void getdistance(String value) {
-    distance = value;
-    print(distance);
-    notifyListeners();
-  }
+  // void getdistance(String value) {
+  //   distance = value;
+  //   print(distance);
+  //   notifyListeners();
+  // }
 
   void getfueltype(int value) {
     if (value == 0) {
@@ -106,9 +111,42 @@ class CarFormProvider with ChangeNotifier {
     print(fuel);
   }
 
-  void getUrl(String value) {
-    url = value;
-    print(url);
-    notifyListeners();
+  // void getUrl(String value) {
+  //   url = value;
+  //   print(url);
+  //   notifyListeners();
+  // }
+
+  printdata() {
+    CarFormProvider carFormProvider;
+  }
+
+  void validation() {
+    if (title == null) {
+      print('fields empty');
+      return;
+    } else {
+      print('else block');
+    }
+  }
+
+  void insertdata() {
+    var db = FirebaseFirestore.instance.collection("cars");
+    db.add({
+      "title": title,
+      "price": price,
+      "negotiable": isNegotiable,
+      "exchangable": availableforexchange,
+      "address": address,
+      "description": description,
+      "brand": brand,
+      "transmission": transmission,
+      "insuarance": insuarance,
+      "distance": distance,
+      "fuel": fuel,
+      "url": url,
+    }).then((value) {
+      print('hello');
+    });
   }
 }

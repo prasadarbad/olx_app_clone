@@ -14,8 +14,10 @@ class OlxImages extends StatefulWidget {
 class _OlxImagesState extends State<OlxImages> {
   List<XFile>? images = [];
   final multipicker = ImagePicker();
-  Future<void> getMultiImages() async {
-    final List<XFile>? selectedImages = await multipicker.pickMultiImage();
+  Future getMultiImages() async {
+    final List<XFile>? selectedImages = await multipicker.pickMultiImage(
+      imageQuality: 70,
+    );
     setState(() {
       if (selectedImages!.isEmpty) {
         images!.addAll(selectedImages);

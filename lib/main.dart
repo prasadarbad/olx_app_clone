@@ -1,15 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:olx_app_clone/screens/homepage.dart';
 import 'package:olx_app_clone/subwidgets/address_details.dart';
 import 'package:olx_app_clone/screens/add_car_advertise.dart';
-import 'package:olx_app_clone/screens/homepage.dart';
-import 'package:olx_app_clone/subwidgets/brands.dart';
-import 'package:olx_app_clone/widgets/bottomnavbar.dart';
-import 'package:olx_app_clone/widgets/iconsgrid.dart';
-import 'package:olx_app_clone/widgets/oldimagepicker.dart';
+
 import 'package:provider/provider.dart';
 import 'package:olx_app_clone/providers/car_form_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         accentColor: Colors.amber,
       ),
-      home: OlxImages(),
+      home: const HomePage(),
     );
   }
 }
