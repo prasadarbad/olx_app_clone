@@ -44,7 +44,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
               ),
               TextFormField(
                 onChanged: (value) {
-                  senddata.gettitle(value);
+                  senddata.title = value;
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
@@ -72,7 +72,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
               ),
               TextFormField(
                 onChanged: (value) {
-                  senddata.getprice(value);
+                  senddata.price = value;
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
@@ -108,7 +108,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
                     activeColor: Colors.blue,
                     value: isOn,
                     onChanged: (value) {
-                      senddata.isnegotiable(value);
+                      senddata.isNegotiable = value;
                       setState(() {
                         isOn = value;
                       });
@@ -133,7 +133,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
                     activeColor: Colors.blue,
                     value: isexchangable,
                     onChanged: (value) {
-                      senddata.exchangebale(value);
+                      senddata.availableforexchange = value;
                       setState(() {
                         isexchangable = value;
                       });

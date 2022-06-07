@@ -42,7 +42,7 @@ class _AdditionalInformationState extends State<AdditionalInformation> {
               ),
               TextFormField(
                 onChanged: (value) {
-                  sendinformation.getinformation(value);
+                  sendinformation.description = value;
                 },
                 maxLength: 500,
                 maxLines: 5,

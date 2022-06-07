@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:olx_app_clone/subwidgets/brands.dart';
 import 'package:olx_app_clone/subwidgets/fueltype.dart';
 import 'package:olx_app_clone/subwidgets/transmission.dart';
+import 'package:olx_app_clone/widgets/olx_image_picker.dart';
 import 'package:provider/provider.dart';
 import '../providers/car_form_provider.dart';
 
@@ -14,6 +15,7 @@ class Specification extends StatefulWidget {
 }
 
 class _SpecificationState extends State<Specification> {
+  OlxImagePicker? picker;
   bool insuarance = false;
   @override
   Widget build(BuildContext context) {
@@ -113,7 +115,7 @@ class _SpecificationState extends State<Specification> {
                     activeColor: Colors.blue,
                     value: insuarance,
                     onChanged: (value) {
-                      senddata.getinsuarance(value);
+                      senddata.insuarance = value;
                       setState(() {
                         insuarance = value;
                       });
@@ -134,7 +136,7 @@ class _SpecificationState extends State<Specification> {
               TextFormField(
                 onChanged: (value) {
                   setState(() {
-                    senddata.getdistance(value);
+                    senddata.distance = value;
                   });
                 },
                 textInputAction: TextInputAction.next,
@@ -189,7 +191,7 @@ class _SpecificationState extends State<Specification> {
               ),
               TextFormField(
                 onChanged: (value) {
-                  senddata.getUrl(value);
+                  senddata.url = value;
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
@@ -205,6 +207,11 @@ class _SpecificationState extends State<Specification> {
                   ),
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    //  senddata.validation();
+                  },
+                  child: const Text('Submit data'))
             ],
           ),
         ),

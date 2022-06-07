@@ -35,7 +35,7 @@ class _AddressDetailsState extends State<AddressDetails> {
   @override
   Widget build(BuildContext context) {
     final sendaddress = Provider.of<CarFormProvider>(context);
-    sendaddress.getaddress(finaladdress);
+    sendaddress.address = finaladdress;
     return Scaffold(
       appBar: AppBar(
         title: Text('Address'),

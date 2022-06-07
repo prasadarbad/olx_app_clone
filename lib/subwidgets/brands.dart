@@ -32,7 +32,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 0;
                 brand = 'ford';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -44,7 +44,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 1;
                 brand = 'Jeep';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -56,7 +56,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 2;
                 brand = 'Mahindra';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -68,7 +68,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 3;
                 brand = 'Maruti Suzuki';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -80,7 +80,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 4;
                 brand = 'Renault';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -92,7 +92,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 5;
                 brand = 'Honda';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -104,7 +104,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 6;
                 brand = 'FIAT';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -116,7 +116,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 7;
                 brand = 'Hyundai';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
@@ -128,7 +128,7 @@ class _BrandsState extends State<Brands> {
               setState(() {
                 seletectedvalue = 8;
                 brand = 'TATA';
-                sendbrand.getbrand(brand);
+                sendbrand.brand = brand;
               });
             },
           ),
