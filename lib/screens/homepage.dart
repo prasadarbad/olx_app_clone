@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:olx_app_clone/widgets/advertisements.dart';
 import 'package:olx_app_clone/widgets/bottomnavbar.dart';
 import 'package:olx_app_clone/widgets/iconsgrid.dart';
 import 'package:olx_app_clone/widgets/slider.dart';
@@ -62,6 +63,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Advertisements(),
           ],
         ),
       ),
