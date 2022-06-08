@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
 class CarFormProvider with ChangeNotifier {
-  // File? carimage;
+  File? carimage;
+  String? imageurl;
   String title;
   String price = '';
   bool isNegotiable = false;
@@ -21,8 +23,7 @@ class CarFormProvider with ChangeNotifier {
   String url = '';
 
   CarFormProvider(
-    // this.carimage,
-   this.title,
+    this.title,
     this.price,
     this.isNegotiable,
     this.availableforexchange,
@@ -33,9 +34,23 @@ class CarFormProvider with ChangeNotifier {
     this.insuarance,
     this.distance,
     this.fuel,
-    this.url,
-  );
+    this.url, {
+    this.carimage,
+    this.imageurl,
+  });
+  Future uploadimage() async {
+    final file = File(carimage!.path);
+    String fileName = file.path.split('/').last;
+    final path = 'carimagesadvertise/$fileName';
 
+    final ref = FirebaseStorage.instance.ref().child(path);
+    UploadTask? uploadTask = ref.putFile(file);
+    final snapshot = await uploadTask.whenComplete(() {});
+    var downurl = (await uploadTask.whenComplete(() {}));
+    var urlofimage = snapshot.ref.getDownloadURL();
+    print(urlofimage);
+    //  imageurl = urlofimage as String;
+  }
   // void gettitle(String value) {
   //   title = value;
 
@@ -131,8 +146,8 @@ class CarFormProvider with ChangeNotifier {
   }
 
   void insertdata() {
-    var db = FirebaseFirestore.instance.collection("cars");
-    db.add({
+    var db = FirebaseFirestore.instance.collection("advertisements");
+    Map<String, dynamic> ourData = {
       "title": title,
       "price": price,
       "negotiable": isNegotiable,
@@ -145,8 +160,7 @@ class CarFormProvider with ChangeNotifier {
       "distance": distance,
       "fuel": fuel,
       "url": url,
-    }).then((value) {
-      print('hello');
-    });
+    };
+    db.doc('cars').set(ourData).whenComplete(() {});
   }
 }

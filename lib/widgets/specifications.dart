@@ -209,7 +209,8 @@ class _SpecificationState extends State<Specification> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    //  senddata.validation();
+                    //senddata.uploadimage();
+                    senddata.insertdata();
                   },
                   child: const Text('Submit data'))
             ],
