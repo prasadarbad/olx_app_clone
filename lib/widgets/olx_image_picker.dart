@@ -32,19 +32,14 @@ class _OlxImagePickerState extends State<OlxImagePicker> {
     final pickedImageFile = File(pickedImage!.path);
 
     setState(() {
-      _pickedImage = pickedImageFile as File;
+      Provider.of<CarFormProvider>(context, listen: false).carimage =
+          pickedImageFile;
+      _pickedImage = pickedImageFile;
     });
     widget.imagepickfn(pickedImageFile);
     if (_pickedImage!.path.isNotEmpty) {
       _imageList.add(_pickedImage as File);
     }
-  }
-
-  Future uploadimage() async {
-    final path = 'carimages/${_pickedImage!}';
-    final file = File(_pickedImage!.path);
-    final ref = await FirebaseStorage.instance.ref().child(path);
-    ref.putFile(file);
   }
 
   @override

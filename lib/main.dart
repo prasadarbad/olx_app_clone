@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         accentColor: Colors.amber,
       ),
-      home: const HomePage(),
+      home: const AddCarAdvertisement(),
     );
   }
 }
