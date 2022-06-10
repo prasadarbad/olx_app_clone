@@ -44,7 +44,6 @@ class _OlxImagePickerState extends State<OlxImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    void submitimages() {}
     final senddata = Provider.of<CarFormProvider>(context);
     return Container(
       height: 170,

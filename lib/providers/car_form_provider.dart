@@ -5,24 +5,25 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:olx_app_clone/screens/homepage.dart';
 
 class CarFormProvider with ChangeNotifier {
   File? carimage;
   String? imageurl;
-  String title;
-  String price = '';
-  bool isNegotiable = false;
-  bool availableforexchange = false;
-  String address = '';
-  String description = '';
-  String brand = '';
-  String transmission = '';
-  bool insuarance = false;
-  String distance = '';
-  String fuel = '';
-  String url = '';
+  String? title;
+  String? price;
+  bool? isNegotiable;
+  bool? availableforexchange;
+  String? address;
+  String? description;
+  String? brand;
+  String? transmission;
+  bool? insuarance;
+  String? distance;
+  String? fuel;
+  String? url;
 
-  CarFormProvider(
+  CarFormProvider({
     this.title,
     this.price,
     this.isNegotiable,
@@ -34,7 +35,7 @@ class CarFormProvider with ChangeNotifier {
     this.insuarance,
     this.distance,
     this.fuel,
-    this.url, {
+    this.url,
     this.carimage,
     this.imageurl,
   });
@@ -45,10 +46,11 @@ class CarFormProvider with ChangeNotifier {
 
     final ref = FirebaseStorage.instance.ref().child(path);
     UploadTask? uploadTask = ref.putFile(file);
-    final snapshot = await uploadTask.whenComplete(() {});
-    var downurl = (await uploadTask.whenComplete(() {}));
-    var urlofimage = snapshot.ref.getDownloadURL();
-    print(urlofimage);
+    await uploadTask.whenComplete(() async {
+      imageurl = await uploadTask.snapshot.ref.getDownloadURL();
+      //  print(imageurl);
+      validation();
+    });
     //  imageurl = urlofimage as String;
   }
   // void gettitle(String value) {
@@ -132,22 +134,34 @@ class CarFormProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  printdata() {
-    CarFormProvider carFormProvider;
-  }
-
   void validation() {
-    if (title == null) {
-      print('fields empty');
+    if (imageurl == null) {
+      return;
+    } else if (title == null) {
+      return;
+    } else if (price == null) {
+      return;
+    } else if (address == null) {
+      return;
+    } else if (description == null) {
+      return;
+    } else if (brand == null) {
+      return;
+    } else if (transmission == null) {
+      return;
+    } else if (distance == null) {
+      return;
+    } else if (fuel == null) {
       return;
     } else {
-      print('else block');
+      insertdata();
     }
   }
 
   void insertdata() {
-    var db = FirebaseFirestore.instance.collection("advertisements");
+    var db = FirebaseFirestore.instance.collection("cars");
     Map<String, dynamic> ourData = {
+      "imageurl": imageurl,
       "title": title,
       "price": price,
       "negotiable": isNegotiable,
@@ -161,6 +175,6 @@ class CarFormProvider with ChangeNotifier {
       "fuel": fuel,
       "url": url,
     };
-    db.doc('cars').set(ourData).whenComplete(() {});
+    db.doc().set(ourData).whenComplete(() {});
   }
 }
