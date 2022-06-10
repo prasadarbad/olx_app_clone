@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:olx_app_clone/authentication/signup.dart';
 import 'package:olx_app_clone/screens/homepage.dart';
 import 'package:olx_app_clone/subwidgets/address_details.dart';
 import 'package:olx_app_clone/screens/add_car_advertise.dart';
@@ -15,8 +16,7 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (_) => CarFormProvider(
-            '', '', false, false, '', '', '', '', false, '', '', ''),
+        create: (_) => CarFormProvider(),
       ),
     ],
     child: const MyApp(),
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         accentColor: Colors.amber,
       ),
-      home: const AddCarAdvertisement(),
+      home: const HomePage(),
     );
   }
 }

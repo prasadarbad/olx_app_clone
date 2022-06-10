@@ -13,7 +13,7 @@ class LocationCard extends StatefulWidget {
 }
 
 class _LocationCardState extends State<LocationCard> {
-  String address1 = '';
+  String? address1;
   bool hasaddress = true;
   @override
   void didChangeDependencies() {
@@ -29,7 +29,7 @@ class _LocationCardState extends State<LocationCard> {
   Widget build(BuildContext context) {
     final getaddress = Provider.of<CarFormProvider>(context);
     address1 = getaddress.address;
-    print(address1);
+
     return Container(
       width: double.infinity,
       height: 200,

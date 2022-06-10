@@ -13,7 +13,7 @@ class AdvertisementItem extends StatefulWidget {
 
 class _AdvertisementItemState extends State<AdvertisementItem> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contex) {
     final getdata = Provider.of<CarFormProvider>(context);
     return SingleChildScrollView(
       child: GridTile(
@@ -25,7 +25,7 @@ class _AdvertisementItemState extends State<AdvertisementItem> {
               height: 200,
               width: double.infinity,
             ),
-            Text('hello'),
+            //   Text(data['title']),
             const SizedBox(
               height: 50,
             ),
