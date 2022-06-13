@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:olx_app_clone/practice/ads.dart';
+import 'package:olx_app_clone/practice/adssubwidget.dart';
+import 'package:olx_app_clone/widgets/exgridview.dart';
 import 'package:olx_app_clone/widgets/advertisements.dart';
 import 'package:olx_app_clone/widgets/bottomnavbar.dart';
-import 'package:olx_app_clone/widgets/iconsgrid.dart';
+
 import 'package:olx_app_clone/widgets/slider.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,14 +62,14 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 20,
             ),
-            IconsGridView(),
+            Exgridview(),
             SizedBox(
               height: 10,
             ),
+            Ads(),
             SizedBox(
               height: 10,
             ),
-            Advertisements(),
           ],
         ),
       ),

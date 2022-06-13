@@ -14,8 +14,6 @@ class _AdvertisementsState extends State<Advertisements> {
   Widget build(BuildContext context) {
     return GridView.builder(
         shrinkWrap: true,
-        //   scrollDirection: Axis.vertical,
-        // padding: const EdgeInsets.all(10.0),
         itemCount: 10,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

@@ -30,8 +30,6 @@ class _UserInformationState extends State<UserInformation> {
             var imageurl = data['imageurl'];
 
             return Container(
-              // title: Text(data['title']),
-              // subtitle: Text(data['price']),
               child: Column(
                 children: [
                   Image.network(
