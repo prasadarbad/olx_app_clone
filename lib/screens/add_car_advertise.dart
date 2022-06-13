@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:olx_app_clone/address%20files/location_card.dart';
 import 'package:olx_app_clone/widgets/additional_information.dart';
 import 'package:olx_app_clone/widgets/general_infromation.dart';
-import 'package:olx_app_clone/widgets/oldimagepicker.dart';
+import 'package:olx_app_clone/practice/oldimagepicker.dart';
 import 'dart:io';
 
 import 'package:olx_app_clone/widgets/olx_image_picker.dart';
@@ -38,13 +38,13 @@ class _AddCarAdvertisementState extends State<AddCarAdvertisement> {
             children: [
               OlxImagePicker(_pickedimage),
               //  OlxImages(),
-              SizedBox(
+              const SizedBox(
                 height: 5.0,
               ),
-              GeneralInformation(),
-              LocationCard(),
-              AdditionalInformation(),
-              Specification(),
+              const GeneralInformation(),
+              const LocationCard(),
+              const AdditionalInformation(),
+              const Specification(),
             ],
           ),
         ),

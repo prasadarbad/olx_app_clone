@@ -44,7 +44,6 @@ class _OlxImagePickerState extends State<OlxImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final senddata = Provider.of<CarFormProvider>(context);
     return Container(
       height: 170,
       width: double.infinity,
@@ -82,26 +81,6 @@ class _OlxImagePickerState extends State<OlxImagePicker> {
                         ? Image.file(File(_imageList[0].path))
                         : null,
                   ),
-                  // Container(
-                  //   height: 70,
-                  //   width: 60,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(40),
-                  //   ),
-                  //   child: _pickedImage != null && _imageList != null
-                  //       ? Image.file(File(_imageList[0].path))
-                  //       : null,
-                  // ),
-                  // Container(
-                  //   height: 90,
-                  //   width: 60,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(20),
-                  //   ),
-                  //   child: _pickedImage != null && _imageList != null
-                  //       ? Image.file(File(_imageList[0].path))
-                  //       : null,
-                  // ),
                 ],
               ),
             ],

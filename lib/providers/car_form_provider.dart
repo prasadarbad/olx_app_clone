@@ -5,7 +5,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:olx_app_clone/screens/homepage.dart';
 
 class CarFormProvider with ChangeNotifier {
   File? carimage;
@@ -48,10 +47,9 @@ class CarFormProvider with ChangeNotifier {
     UploadTask? uploadTask = ref.putFile(file);
     await uploadTask.whenComplete(() async {
       imageurl = await uploadTask.snapshot.ref.getDownloadURL();
-      //  print(imageurl);
+
       validation();
     });
-    //  imageurl = urlofimage as String;
   }
   // void gettitle(String value) {
   //   title = value;
@@ -125,7 +123,6 @@ class CarFormProvider with ChangeNotifier {
     } else {
       fuel = 'Electric';
     }
-    print(fuel);
   }
 
   // void getUrl(String value) {

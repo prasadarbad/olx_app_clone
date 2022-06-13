@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:olx_app_clone/subwidgets/fixedwidgets.dart';
 import 'package:provider/provider.dart';
 import '../providers/car_form_provider.dart';
 
@@ -16,21 +17,21 @@ class _AddressDetailsState extends State<AddressDetails> {
     if (isValid) {
       formkey.currentState!.save();
 
-      String address =
+      String finaladdress =
           'Address Line1:$addressline1\nAddess Line 2:$addressline2\nArea:$area\nCity:$city\nCountry:$country\nPincode:$pincode\nLandMark:$landmark';
-      finaladdress = address;
+
       Navigator.of(context).pop();
     }
   }
 
-  String addressline1 = '';
-  String addressline2 = '';
-  String area = '';
-  String city = '';
-  String country = '';
-  String pincode = '';
-  String landmark = '';
-  String finaladdress = '';
+  String? addressline1;
+  String? addressline2;
+  String? area;
+  String? city;
+  String? country;
+  String? pincode;
+  String? landmark;
+  String? finaladdress;
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -57,281 +58,94 @@ class _AddressDetailsState extends State<AddressDetails> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      'Address Line 1',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
+                    const TextBox(text: 'Address line 1'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        addressline1 = value;
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter Address Line 1';
+                          return 'Please enter address one';
                         }
                       },
-                      onSaved: (value) {
-                        setState(() {
-                          addressline1 = value!;
-                        });
-                      },
-                      textInputAction: TextInputAction.next,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'Address Line 2',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
-                      onSaved: (value) {
-                        setState(() {
-                          addressline2 = value!;
-                        });
+                    const TextBox(text: 'Address Line 2'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        addressline2 = value;
                       },
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'Area',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
+                    const TextBox(text: 'Area'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        area = value;
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter Area';
                         }
+                        return null;
                       },
-                      onSaved: (value) {
-                        setState(() {
-                          area = value!;
-                        });
-                      },
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'City*',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
+                    const TextBox(text: 'City'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        city = value;
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter City Name';
                         }
+                        return null;
                       },
-                      onSaved: (value) {
-                        setState(() {
-                          city = value!;
-                        });
-                      },
-                      textInputAction: TextInputAction.next,
-                      inputFormatters: [
-                        FilteringTextInputFormatter(RegExp(r'[a-zA-z]'),
-                            allow: true)
-                      ],
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'Country*',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
+                    const TextBox(text: 'Country'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        country = value;
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter Country Name';
                         }
+                        return null;
                       },
-                      onSaved: (value) {
-                        setState(() {
-                          country = value!;
-                        });
-                      },
-                      textInputAction: TextInputAction.next,
-                      inputFormatters: [
-                        FilteringTextInputFormatter(RegExp(r'[a-zA-z]'),
-                            allow: true)
-                      ],
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'Pincode*',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
+                    const TextBox(text: 'Pincode'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        pincode = value;
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter PinCode';
+                          return 'Please enter Pincode';
                         }
                         return null;
                       },
-                      onSaved: (value) {
-                        setState(() {
-                          pincode = value!;
-                        });
-                      },
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        FilteringTextInputFormatter(RegExp(r'[0-9]+$'),
-                            allow: true)
-                      ],
-                      maxLength: 6,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'LandMark',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    ),
-                    TextFormField(
-                      onSaved: (value) {
-                        setState(() {
-                          landmark = value!;
-                        });
+                    const TextBox(text: 'Landmark'),
+                    MyTextFormField(
+                      onsaved: (value) {
+                        landmark = value;
                       },
-                      textInputAction: TextInputAction.done,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        contentPadding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 1.0),
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -362,3 +176,11 @@ class _AddressDetailsState extends State<AddressDetails> {
     );
   }
 }
+//  inputFormatters: [
+//                         FilteringTextInputFormatter(RegExp(r'[a-zA-z]'),
+//                             allow: true)
+//                       ],
+//  inputFormatters: [
+//                         FilteringTextInputFormatter(RegExp(r'[0-9]+$'),
+//                             allow: true)
+//                       ],

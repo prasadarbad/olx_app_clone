@@ -14,7 +14,6 @@ class AdvertisementItem extends StatefulWidget {
 class _AdvertisementItemState extends State<AdvertisementItem> {
   @override
   Widget build(BuildContext contex) {
-    final getdata = Provider.of<CarFormProvider>(context);
     return SingleChildScrollView(
       child: GridTile(
           child: Container(
